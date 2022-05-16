@@ -9,7 +9,7 @@ import Foundation
 import ServiceLocator
 
 /// MockServiceContainer class.
-class MockServiceContainer: ServiceContainerProtocol {
+class MockServiceContainer: ServiceContainer {
     /// Registers a service in container.
     /// - parameter abstraction: A service abstraction.
     /// - parameter concrete: A service instance.

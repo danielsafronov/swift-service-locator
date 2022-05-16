@@ -10,37 +10,37 @@ import XCTest
 
 class ServiceLocatorTests: XCTestCase {
     func testCreate() {
-        XCTAssertNoThrow(ServiceLocator())
+        XCTAssertNoThrow(DefaultServiceLocator())
     }
     
     func testCreateDefault() {
-        let serviceLocator = ServiceLocator()
-        XCTAssertTrue(serviceLocator.container is ServiceContainer)
+        let serviceLocator = DefaultServiceLocator()
+        XCTAssertTrue(serviceLocator.container is DefaultServiceContainer)
     }
     
     func testCreateCustom() {
-        let serviceLocator = ServiceLocator(container: MockServiceContainer())
+        let serviceLocator = DefaultServiceLocator(container: MockServiceContainer())
         XCTAssertTrue(serviceLocator.container is MockServiceContainer)
     }
     
     func testRegisterNoThrow() {
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         XCTAssertNoThrow(serviceLocator.register(abstraction: MockAbstractionProtocol.self, concrete: MockAbstraction(value: "Mock Abstraction")))
     }
     
     func testResolveNoThrow() {
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         XCTAssertNoThrow(serviceLocator.resolve(abstraction: MockAbstractionProtocol.self))
     }
     
     func testResolveNil() {
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         XCTAssertNil(serviceLocator.resolve(abstraction: MockAbstractionProtocol.self))
     }
     
     func testResolveСoncrete() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         serviceLocator.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction = serviceLocator.resolve(abstraction: MockAbstractionProtocol.self)
@@ -51,7 +51,7 @@ class ServiceLocatorTests: XCTestCase {
     
     func testResolveСoncreteShort() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         serviceLocator.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction: MockAbstractionProtocol = serviceLocator.resolve()!
@@ -62,7 +62,7 @@ class ServiceLocatorTests: XCTestCase {
     
     func testRequireResolveСoncrete() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceLocator = ServiceLocator()
+        let serviceLocator = DefaultServiceLocator()
         serviceLocator.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction = serviceLocator.requireResolve(abstraction: MockAbstractionProtocol.self)

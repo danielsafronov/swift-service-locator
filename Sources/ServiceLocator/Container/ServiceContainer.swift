@@ -1,32 +1,21 @@
 //
 //  ServiceContainer.swift
-//  
+//  ServiceLocator
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //
 
 import Foundation
 
-/// ServiceContainer class.
-final public class ServiceContainer: ServiceContainerProtocol {
-    /// Container register.
-    private var register: [ServiceKey: ServiceEntry] = [:]
-    
-    /// Registers a service in container.
+/// ServiceContainer protocol.
+public protocol ServiceContainer {
+    /// Registers a service in a `ServiceContainer`.
     /// - parameter abstraction: A service abstraction.
     /// - parameter concrete: A service instance.
-    public func register<Service>(abstraction: Service.Type, concrete: Service) {
-        let instanceKey = ServiceKey(value: abstraction)
-        let instance = ServiceEntry(type: abstraction, value: concrete)
-        
-        register[instanceKey] = instance
-    }
+    func register<Service>(abstraction: Service.Type, concrete: Service)
     
-    /// Resolve an abstraction from container.
+    /// Resolves an abstraction from `ServiceContainer`.
     /// - parameter abstraction: A service abstraction.
-    /// - returns: A resolved instance.
-    public func resolve<Service>(abstraction: Service.Type) -> Service? {
-        let instanceKey = ServiceKey(value: abstraction)
-        return register[instanceKey]?.value as? Service
-    }
+    /// - returns: A resolved instance or `nil`.
+    func resolve<Service>(abstraction: Service.Type) -> Service?
 }

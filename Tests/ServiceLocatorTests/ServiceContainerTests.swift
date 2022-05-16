@@ -10,11 +10,11 @@ import XCTest
 
 class ServiceContainerTests: XCTestCase {
     func testCreate() {
-        XCTAssertNoThrow(ServiceContainer())
+        XCTAssertNoThrow(DefaultServiceContainer())
     }
     
     func testRegisterNoThrow() {
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         XCTAssertNoThrow(
             serviceContainer.register(
                 abstraction: MockAbstractionProtocol.self,
@@ -24,18 +24,18 @@ class ServiceContainerTests: XCTestCase {
     }
     
     func testResolveNoThrow() {
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         XCTAssertNoThrow(serviceContainer.resolve(abstraction: MockAbstractionProtocol.self))
     }
     
     func testResolveNil() {
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         XCTAssertNil(serviceContainer.resolve(abstraction: MockAbstractionProtocol.self))
     }
     
     func testResolveСoncrete() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         serviceContainer.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction = serviceContainer.resolve(abstraction: MockAbstractionProtocol.self)
@@ -46,7 +46,7 @@ class ServiceContainerTests: XCTestCase {
     
     func testResolveСoncreteShort() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         serviceContainer.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction: MockAbstractionProtocol = serviceContainer.resolve()!
@@ -57,7 +57,7 @@ class ServiceContainerTests: XCTestCase {
     
     func testRequireResolveСoncrete() {
         let mockAbstraction = MockAbstraction(value: "Mock Abstraction")
-        let serviceContainer = ServiceContainer()
+        let serviceContainer = DefaultServiceContainer()
         serviceContainer.register(abstraction: MockAbstractionProtocol.self, concrete: mockAbstraction)
         
         let resolvedAbstraction = serviceContainer.requireResolve(abstraction: MockAbstractionProtocol.self)

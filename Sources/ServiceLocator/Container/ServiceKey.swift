@@ -1,6 +1,6 @@
 //
 //  ServiceKey.swift
-//  
+//  ServiceLocator
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //
