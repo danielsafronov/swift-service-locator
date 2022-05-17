@@ -1,12 +1,13 @@
 //
-//  File.swift
-//  
+//  MockServiceContainer.swift
+//  ServiceLocatorTests
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //
 
 import Foundation
 import ServiceLocator
+import ServiceContainer
 
 /// MockServiceContainer class.
 class MockServiceContainer: ServiceContainer {

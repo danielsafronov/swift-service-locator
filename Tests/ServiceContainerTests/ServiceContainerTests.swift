@@ -1,12 +1,12 @@
 //
 //  ServiceContainerTests.swift
-//  
+//  ServiceContainerTests
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //
 
 import XCTest
-@testable import ServiceLocator
+@testable import ServiceContainer
 
 class ServiceContainerTests: XCTestCase {
     func testCreate() {

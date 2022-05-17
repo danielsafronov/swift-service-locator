@@ -1,6 +1,6 @@
 //
 //  ServiceEntry.swift
-//  ServiceLocator
+//  ServiceContainer
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //

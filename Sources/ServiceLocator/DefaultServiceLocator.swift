@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ServiceContainer
 
 /// DefaultServiceLocator structure.
 public struct DefaultServiceLocator: ServiceLocator {

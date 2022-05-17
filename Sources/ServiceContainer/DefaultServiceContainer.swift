@@ -1,6 +1,6 @@
 //
 //  ServiceContainer.swift
-//  ServiceLocator
+//  ServiceContainer
 //
 //  Created by Daniel Safronov on 03.04.2022.
 //
@@ -11,6 +11,10 @@ import Foundation
 final public class DefaultServiceContainer: ServiceContainer {
     /// Container register.
     private var register: [ServiceKey: ServiceEntry] = [:]
+    
+    /// Creates a new `DefaultServiceContainer` instance.
+    /// - returns: A new instance of `DefaultServiceContainer`.
+    public init() {}
     
     /// Registers a service in a `ServiceContainer`.
     /// - parameter abstraction: A service abstraction.
